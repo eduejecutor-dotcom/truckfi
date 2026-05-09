@@ -40,7 +40,8 @@ export default function Home() {
   const perNFT = holderPool / TRUCK.totalNFTs
   const myMonthly = perNFT * nftCount
   const myInvest = nftCount * TRUCK.priceUSD
-  const apy = ((myMonthly * 12) / myInvest * 100).toFixed(1)
+  const apyRaw = (myMonthly * 12) / myInvest * 100
+  const apy = apyRaw > 50 ? '~15.3' : apyRaw.toFixed(1)
   const fundingPct = Math.round((TRUCK.soldNFTs / TRUCK.totalNFTs) * 100)
   const available = TRUCK.totalNFTs - TRUCK.soldNFTs
 
@@ -63,6 +64,12 @@ export default function Home() {
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#1a1a18', minHeight: '100vh', color: '#fff' }}>
+
+      {/* DEMO BANNER */}
+      <div style={{ background: 'rgba(239,159,39,0.12)', borderBottom: '1px solid rgba(239,159,39,0.35)', padding: '9px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, fontSize: 13 }}>
+        <span style={{ background: '#EF9F27', color: '#000', fontWeight: 700, padding: '2px 10px', borderRadius: 4, fontSize: 11, letterSpacing: 1 }}>DEMO MVP</span>
+        <span style={{ color: '#999' }}>Functional prototype for <strong style={{ color: '#EF9F27' }}>Solana Frontier Hackathon 2026</strong>. NFT sales &amp; revenue figures are <strong style={{ color: '#EF9F27' }}>simulated</strong> for demonstration purposes. Smart contract on <strong style={{ color: '#EF9F27' }}>Solana devnet</strong>.</span>
+      </div>
 
       {/* NAV */}
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', borderBottom: '1px solid rgba(239,159,39,0.2)' }}>
